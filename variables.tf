@@ -1,6 +1,7 @@
 variable "autostart" {
-  type    = bool
-  default = true
+  type        = bool
+  default     = true
+  description = "If the domain should start on host boot up"
 }
 
 variable "base_volume_id" {
@@ -10,8 +11,9 @@ variable "base_volume_id" {
 }
 
 variable "base_volume_name" {
-  type    = string
-  default = null
+  type        = string
+  default     = null
+  description = "Name of base volume (if var.base_volume_id is not given)"
 }
 
 variable "cloudinit" {
@@ -21,13 +23,15 @@ variable "cloudinit" {
 }
 
 variable "cpus" {
-  type    = number
-  default = null
+  type        = number
+  default     = null
+  description = "Number of vCPUs to assign to the domain (equivalent to var.vcpu)"
 }
 
 variable "description" {
-  type    = string
-  default = null
+  type        = string
+  default     = null
+  description = "Human-readable description of the domain"
 }
 
 variable "disks" {
@@ -39,7 +43,8 @@ variable "disks" {
     scsi         = optional(string)
     wwn          = optional(string)
   }))
-  default = {}
+  default     = {}
+  description = "Additional disks (in addition to the root volume) to attach to the domain"
 }
 
 variable "graphics" {
@@ -54,11 +59,13 @@ variable "graphics" {
     listen_address = "0.0.0.0"
     listen_type    = "address"
   }
+  description = "Domain graphics configuration. Defaults to SPICE."
 }
 
 variable "memory" {
-  type    = number
-  default = 512
+  type        = number
+  default     = 0.5
+  description = "Amount of memory in GiB to give to the domain"
 }
 
 variable "name" {
@@ -96,7 +103,8 @@ variable "network_interfaces" {
     macvtap        = optional(string)
     passthrough    = optional(string)
   }))
-  default = {}
+  default     = {}
+  description = "Network interface configurations. Overrides var.network_interface"
 }
 
 variable "root_volume" {
@@ -107,12 +115,13 @@ variable "root_volume" {
   default = {
     size = 8
   }
-  description = "(optional) describe your variable"
+  description = "Root volume configuration"
 }
 
 variable "running" {
-  type    = bool
-  default = true
+  type        = bool
+  default     = true
+  description = "If domain should be running"
 }
 
 variable "user_data" {
@@ -121,8 +130,8 @@ variable "user_data" {
   default     = null
 }
 
-# equivalent to var.cpus
 variable "vcpu" {
-  type    = number
-  default = null
+  type        = number
+  default     = null
+  description = "Number of vCPUs to assign to the domain (equivalent to var.cpus)"
 }

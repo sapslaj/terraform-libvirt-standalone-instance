@@ -2,7 +2,7 @@
 
 Create a single VM/domain/instance/whatever you wanna call it on libvirt without too much boilerplate.
 
-Right now it is _slightly_ opinionated since I built this for my personal use. Future versions should be more flexible.
+Right now it is _slightly_ opinionated since I built this for my personal use. Future versions should be more flexible. Also the API is unstable currently. If you use this in your own infra, pin the version at a specific patch.
 
 ## Usage
 

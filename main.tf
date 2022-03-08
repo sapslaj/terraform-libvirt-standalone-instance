@@ -51,7 +51,7 @@ locals {
 resource "libvirt_domain" "this" {
   name        = var.name
   description = var.description
-  memory      = var.memory
+  memory      = var.memory * 1024
   vcpu        = coalesce(var.vcpu, var.cpus, 1)
   running     = var.running
   autostart   = var.autostart
