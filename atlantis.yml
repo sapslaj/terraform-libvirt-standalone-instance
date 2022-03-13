@@ -1,0 +1,3 @@
+# Disable Atlantis for this repo
+version: 3
+projects: []
