@@ -22,6 +22,12 @@ variable "cloudinit" {
   default     = {}
 }
 
+variable "cloudinit_network" {
+  type        = any
+  description = "Structured cloudinit network config data"
+  default     = null
+}
+
 variable "cpus" {
   type        = number
   default     = null
