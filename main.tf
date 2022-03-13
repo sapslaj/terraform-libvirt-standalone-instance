@@ -20,6 +20,7 @@ locals {
     "# vim: syntax=yaml",
     yamlencode(local.cloudinit_config),
   ]))
+  cloudinit_network_config = var.cloudinit_network == null ? null : try(yamlencode(var.cloudinit_network), var.cloudinit_network)
   cloudinit_disk_name = join("", [
     var.name,
     "-cloudinit-",
@@ -29,9 +30,10 @@ locals {
 }
 
 resource "libvirt_cloudinit_disk" "this" {
-  name      = local.cloudinit_disk_name
-  pool      = "default"
-  user_data = local.cloudinit_user_data
+  name           = local.cloudinit_disk_name
+  pool           = "default"
+  user_data      = local.cloudinit_user_data
+  network_config = local.cloudinit_network_config
 }
 
 locals {
