@@ -115,8 +115,9 @@ variable "network_interfaces" {
 
 variable "root_volume" {
   type = object({
-    name = optional(string)
-    size = optional(number)
+    attachment = optional(string)
+    name       = optional(string)
+    size       = optional(number)
   })
   default = {
     size = 8
